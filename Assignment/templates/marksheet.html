@@ -1,0 +1,55 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+</head>  
+<body>  
+<form method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+<table border="1">
+<tr>
+<th>stu_id</th>
+<th>subject</th>
+<th>mark</th>
+
+</tr>
+
+<tr><td>{{datas.stu_id}}</td>
+<td>{{datas.subject}}</td>
+<td>{{datas.mark}}</td>
+
+</tr>
+
+</table>
+</form>
+
+
+</body>  
+</html>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

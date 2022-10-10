@@ -1,0 +1,85 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+</head>  
+<body>  
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>First_name</th>
+<th>last_name</th>
+<th>photo</th>
+<th>created_time</th>
+<th>updated_time</th>
+<th>created_by</th>
+
+<th>marks_</th>
+<th>update</th>
+<th>Delete</th>
+<th>Json</th>
+</tr>
+
+
+
+{% for i in datas %}.
+
+<tr>
+<td>{{i.id}}</td>
+<td>{{i.first_name}}</td>
+<td>{{i.last_name}}</td>
+<td><img src= "{{i.img.url}}" alt="{{i.first_name}}"width="40" height="40"></td>
+<td>{{i.updated_time}}</td>
+<td>{{i.created_time}}</td>
+<td>{{i.created_by}}</td>
+
+
+<td><button><a href="viewdetails/{{i.id}}">view</a><button></td>
+<td><button><a href="edit/{{i.id}}">update</a><button></td>
+<td><button><a href="delete/{{i.id}}">delete</a><button></td>
+<td><button><a href="jsondata/{{i.id}}">jsondata</a><button></td>
+</tr>
+
+
+{% endfor %}
+
+
+</table><br><br>
+<button><a href="add">add</a><button><br>
+<button><a href="markview">view_mark</a><button><br>
+<button><a href="user_logout">logout</a><button><br>
+</form>
+
+
+</body>  
+</html>  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

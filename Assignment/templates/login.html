@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Login</h2>
+
+<div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+</div>
+<form method="post" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'listview' %}"><button>Login</button></a> 
+</form>
+<button><a href = "/Assignment">Back</a></button>
+{% endblock %}

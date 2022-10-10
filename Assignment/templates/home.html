@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ {{ Assignment.username }}
+
+<div>
+    <a href="{% url 'listview' %}"><button>Login</button></a> 
+    <a href="{% url 'login' %}"><button>Logout</button></a> 
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+</head>  
+<body>  
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+<table border="1">
+<tr>
+<th>stu_id</th>
+<th>subject</th>
+<th>mark</th>
+
+</tr>
+
+
+
+{% for i in data %}.
+
+<tr>
+<td>{{i.stu_id}}</td>
+<td>{{i.subject}</td>
+<td>{{i.mark}}</td>
+
+
+</tr>
+
+
+{% endfor %}
+
+
+</table><br><br>
+<button><a href="addmarks">add</a><button><br>
+
+</form>
+
+
+</body>  
+</html>  
