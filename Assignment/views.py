@@ -1,6 +1,6 @@
 from Assignment.models import students, mark, course
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import studentform, markform
 from django.http import JsonResponse
 import json
@@ -36,13 +36,13 @@ def jsondata(request):
  	form = students.objects.all()
  	data = serialize("json", form)
  	data = json.loads(data)
- 	return JsonResponse(data, status=200, safe=False)
+ 	return JsonResponse(data, status = 200, safe = False) # any object can be passed for serialization, otherwise only dict instances are allowed
 
 def jsondetails(request):
     form = students.objects.all()
     data = serialize("json", form)
     data = json.loads(data)
-    return JsonResponse(data, status=200, safe=False)	
+    return JsonResponse(data, status = 200, safe = False)	
  	
 def json_data(request):
 	data = students.objects.all()
@@ -95,6 +95,15 @@ def edit(request, id):
         form.save()
     context={'form': form}
     return render(request, "edit.html", context)
+
+def stu_delete(request):
+    obj = students.objects.get(id = id)
+    form = studentform(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+    context={'form': form}
+    return render(request, "delete.html", context)
+
     
 def delete(request, id):
     obj = students.objects.get(id = id)
