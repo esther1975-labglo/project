@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>
+    Django search assignment
+  </title>
+
+  
+</head>
+<body style = "background-color:rgb(247, 216, 214)">
+  <a href= "http://127.0.0.1:8000/amazon/add2cart/" ><img style = "padding-right: 1000px ;" alt="add2cart" src="https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-add-to-cart-vector-icon-png-image_313447.jpg"
+    width=50" height="50"> </a>
+<center><h1>Searching title</h1>
+<form method="get" action="">
+  {% csrf_token %}
+  Search Product: <input name="src" type="text" placeholder="Search" value="">
+</form>
+
+</center>
+<center>
+  <table border = 2>
+   <tr>
+    <th>ID</th>
+   
+    <th id="name">name</th>
+    <th>image</th>
+   
+    <th>Price</th>
+    </tr>
+    {% for product in object_list %}
+    <tr>
+       <td>{{product.id}} </td>
+      
+       <td>{{product.name}}</td> 
+       <td><img src= "{{i.image.url}}" alt = "{{i.product}}"width="40" height="40"></td>
+       <td>{{product.brand}}</td>
+       <td  style="text-align:right">${{product.price}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</center>
+</body>
+</html>

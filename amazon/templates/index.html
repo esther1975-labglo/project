@@ -1,0 +1,47 @@
+
+
+
+<center>
+  <nav style = "padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(8, 86, 158);">
+    <h3 style = "color: rgb(199, 57, 21);">Amazon</h3>
+    
+    <a href= "http://127.0.0.1:8000/amazon/Cart/" ><img style = "padding-right: 1000px ;" alt="add2cart" src="https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-add-to-cart-vector-icon-png-image_313447.jpg"
+      width=40" height="40"> </a>
+    <a href="http://127.0.0.1:8000/amazon/tracking/" style = "color: white;"><button>Track Order</button></a>
+    <a href="http://127.0.0.1:8000/amazon/change_password/" style = "color: white;"><button>Change Password</button></a>
+    <a href="http://127.0.0.1:8000/amazon/contact/" style = "color: white;"><button>Contact As</button></a>
+    <form method = "GET" action="Product_list">
+      <input type="text" name="search" placeholder="Search by title" value="{{request.GET.name}}">
+      <a href="http://127.0.0.1:8000/amazon/Search/"><button>submit</button></a>
+  </form>
+    
+</nav>
+  <div class="container mt-2 mb-3">
+ 
+    <div class="row">
+      {% for product in products %}
+      <div class="col-lg-4 my-4">
+        <div class="card shadow align-items-center" style="width: 20rem; height: 25rem;">
+          
+          <img src="{{product.image.url}}" class="card-img-top" style="width: 170px; height: 260px;" alt="{{product.name}}">
+         
+          <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <hr>
+            {% if request.user.is_authenticated %}
+            <a href="Cart/"><button data-product="{{product.id}}" action="cart" class="btn add-btn update-cart"
+              style="background-color: #8c5d4f; color: white;">Add To Cart</button></a>
+            <a href="/product_view/{{product.id}}/" class="btn btn-outline-secondary">View</a>
+            {% else %}
+            <button class="btn" style="background-color: #8c5d4f; color: white;">Login to add the item</button>
+            {% endif %}
+            <h4 style="display: inline-block; float: right;">&nbsp;₹{{product.price}}</h4>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </center>
